@@ -49,6 +49,13 @@ app.use(expressSession({
   })
 }));
 
+// app.use((req, res, next) => {
+//   // Access user information from within my templates
+//   res.locals.user = req.session.user;
+//   // Keep going to the next middleware or route handler
+//   next();
+// });
+
 
 app.use('/', indexRouter);
 app.use('/', usersRouter);
