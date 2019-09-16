@@ -17,13 +17,15 @@ router.post('/sign-up', (req, res, next) => {
   const username = req.body.username;
   const email = req.body.email;
   const password = req.body.password;
+  const role = req.body.role;
 
   bcrypt.hash(password, 10)
     .then(hash => {
       return User.create({
         username,
         email,
-        passwordHash: hash
+        passwordHash: hash,
+        role
       });
     })
     .then(user => {
