@@ -10,8 +10,19 @@ const schema = new mongoose.Schema({
   email: {
     type: String,
     lowercase: true,
-    trim: true
-  }
+    trim: true, 
+    required: true,
+    unique: true
+  }, 
+  passwordHash: {
+    type: String, 
+    required: true
+  }, 
+  // is it necessary? 
+  // cohort: {
+  //   type: String, 
+  //   required: true
+  // }
 });
 
 module.exports = mongoose.model('User', schema);

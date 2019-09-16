@@ -31,7 +31,7 @@ app.use(sassMiddleware({
 }));
 
 app.use('/', indexRouter);
-app.use('/user', usersRouter);
+app.use('/', usersRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
