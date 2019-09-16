@@ -38,7 +38,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-/* app.use(expressSession({
+app.use(expressSession({
   secret: process.env.SESSION_SECRET,
   cookie: { maxAge: 60 * 60 * 24 * 1000 },
   resave: true,
@@ -47,7 +47,7 @@ app.use(cookieParser());
     mongooseConnection: mongoose.connection,
     ttl: 24 * 60 * 60
   })
-})); */
+}));
 
 // app.use((req, res, next) => {
 //   // Access user information from within my templates

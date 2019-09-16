@@ -5,13 +5,6 @@ const router = Router();
 const User = require('./../models/user');
 const bcrypt = require('bcryptjs');
 
-// const routeGuardMiddleware = (req, res, next) => {
-//   if (!req.session.user) {
-//     res.redirect('/sign-in');
-//   } else {
-//     next();
-//   }
-// };
 
 router.get('/', (req, res, next) => {
   res.render('user', { name: 'James Dean' });
@@ -71,7 +64,7 @@ router.post('/sign-in', (req, res, next) => {
         req.session.user = {
           _id: auxUser._id
         };
-        res.redirect('secret-student');
+        res.redirect('dashboard');
       }
     })
     .catch(error => {
@@ -80,9 +73,12 @@ router.post('/sign-in', (req, res, next) => {
     });
 });
 
-router.get('/secret-student', /* routeGuardMiddleware, */ (req, res, next) => {
-  res.render('secret-student');
+router.get('/dashboard', /* routeGuardMiddleware, */ (req, res, next) => {
+  res.render('dashboard');
 });
 
+router.get('/create', (req, res, next) => {
+  res.render('create');
+});
 
 module.exports = router;
