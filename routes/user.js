@@ -7,8 +7,10 @@ const bcrypt = require('bcryptjs');
 
 
 router.get('/', (req, res, next) => {
-  res.render('user', { name: 'James Dean' });
+  res.render('sign-in');
+  // res.redirect('sign-in');
 });
+
 
 router.get('/sign-up', (req, res, next) => {
   res.render('sign-up');
@@ -79,6 +81,13 @@ router.get('/dashboard', /* routeGuardMiddleware, */ (req, res, next) => {
 
 router.get('/create', (req, res, next) => {
   res.render('create');
+});
+
+
+
+router.post('sign-ou', (req, res, next) => {
+  req.session.destroy();
+  res.redirect('/sign-in');
 });
 
 module.exports = router;

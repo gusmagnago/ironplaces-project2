@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node ./server",
     "dev": "nodemon ./server",
+    "seed":"node ./server/seed.js",
     "dev:debug": "DEBUG=ironplaces* npm run dev",
     "lint": "eslint ."
   },
