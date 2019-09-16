@@ -13,11 +13,35 @@ router.get('/sign-in', (req, res, next) => {
   res.render('sign-in');
 });
 
-/* router.post('/sign-in', (req, res, next) => {
+router.post('/sign-in', (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
+  
+  let auxUser;
 
-
-}) */
+  User.findOne({ email })
+    .then(user => {
+      if (!user) {
+        res.redirect('error');
+      } else {
+        auxUser = user;
+        return bcrypt.compare(password, user.passwordHash);
+      }
+    })
+    .then(matches => {
+      if (!matches) {
+        res.redirect('error');
+      } else {
+        req.session.user = {
+          _id: auxUser._id
+        };
+        res.redirect('private');
+      }
+    })
+    .catch(error => {
+      console.log('signin signup error', error);
+      next(error);
+    });
+});
 
 module.exports = router;

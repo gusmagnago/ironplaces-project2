@@ -18,11 +18,11 @@ const schema = new mongoose.Schema({
     type: String, 
     required: true
   }, 
-  // is it necessary? 
-  // cohort: {
-  //   type: String, 
-  //   required: true
-  // }
+ // to put more info later
+  cohort: {
+    type: String, 
+    required: true
+  }
 });
 
 module.exports = mongoose.model('User', schema);
