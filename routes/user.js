@@ -17,6 +17,34 @@ router.get('/', (req, res, next) => {
   res.render('user', { name: 'James Dean' });
 });
 
+router.get('/sign-up', (req, res, next) => {
+  res.render('sign-up');
+});
+
+router.post('/sign-up', (req, res, next) => {
+  const username = req.body.username;
+  const email = req.body.email;
+  const password = req.body.password;
+
+  bcrypt.hash(password, 10)
+    .then(hash => {
+      return User.create({
+        username,
+        email,
+        passwordHash: hash
+      });
+    })
+    .then(user => {
+      req.session.user = {
+        _id: user._id
+      };
+      res.redirect('/');
+    })
+    .catch(error => {
+      console.log('There was an error in the sign up process.', error);
+    });
+});
+
 router.get('/sign-in', (req, res, next) => {
   res.render('sign-in');
 });

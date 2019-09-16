@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
-  name: {
+  username: {
     type: String,
     trim: true
   },
@@ -11,17 +11,15 @@ const schema = new mongoose.Schema({
     type: String,
     lowercase: true,
     trim: true, 
-    required: true,
-    unique: true
+    required: true
   }, 
   passwordHash: {
     type: String, 
     required: true
-  }, 
- // to put more info later
-  cohort: {
-    type: String, 
-    required: true
+  },
+  role: {
+    type: String,
+    enum : ['ADMIN', 'STUDENT']
   }
 });
 
