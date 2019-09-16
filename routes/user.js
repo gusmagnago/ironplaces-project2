@@ -5,6 +5,14 @@ const router = Router();
 const User = require('./../models/user');
 const bcrypt = require('bcryptjs');
 
+// const routeGuardMiddleware = (req, res, next) => {
+//   if (!req.session.user) {
+//     res.redirect('/sign-in');
+//   } else {
+//     next();
+//   }
+// };
+
 router.get('/', (req, res, next) => {
   res.render('user', { name: 'James Dean' });
 });
@@ -35,7 +43,7 @@ router.post('/sign-in', (req, res, next) => {
         req.session.user = {
           _id: auxUser._id
         };
-        res.redirect('private');
+        res.redirect('secret-student');
       }
     })
     .catch(error => {
@@ -43,5 +51,10 @@ router.post('/sign-in', (req, res, next) => {
       next(error);
     });
 });
+
+router.get('/secret-student', /* routeGuardMiddleware, */ (req, res, next) => {
+  res.render('secret-student');
+});
+
 
 module.exports = router;
