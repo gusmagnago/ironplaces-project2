@@ -84,10 +84,6 @@ router.get('/dashboard', /* routeGuardMiddleware, */ (req, res, next) => {
   res.render('dashboard');
 });
 
-router.get('/create', (req, res, next) => {
-  res.render('create');
-});
-
 
 router.get("/sign-out", (req, res, next) => {
   req.session.destroy((err) => {
