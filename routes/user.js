@@ -69,7 +69,7 @@ router.post('/sign-in', (req, res, next) => {
         req.session.user = {
           _id: auxUser._id
         };
-        res.redirect('/dashboard');
+        res.redirect('/find-places');
       }
     })
     .catch(error => {
@@ -80,12 +80,12 @@ router.post('/sign-in', (req, res, next) => {
 });
 
 
-router.get('/dashboard', /* routeGuardMiddleware, */ (req, res, next) => {
+router.get('/find-places', /* routeGuardMiddleware, */ (req, res, next) => {
   User.findById(req.session.user._id)
   .then((user) => {
     console.log(user);
 
-    res.render('dashboard', user);
+    res.render('find-places', user);
   })
   .catch((error) => {
     console.log(error);
@@ -102,11 +102,6 @@ router.get('/profile', (req, res, next) => {
     console.log(error);
   });
  });
-
-router.get('/create', (req, res, next) => {
-  res.render('create');
-});
-
 
 router.get("/sign-out", (req, res, next) => {
   req.session.destroy((err) => {

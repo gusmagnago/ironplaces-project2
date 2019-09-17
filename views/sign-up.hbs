@@ -1,17 +1,21 @@
-  
-<h1>Sign Up</h1>
-<form method="POST" action="/sign-up">
-    <div class="form-group">
-        <label for="sign-up-username">Username</label>
-        <input type="text" name="username" placeholder="Your username">
+<div class="container d-flex justify-content-center">
+    <div class="card border-0" style="width: 25rem;">
+        <div class="card-body text-center"></div>
+        <form method="POST" action="/sign-up">
+            <div class="form-group text-center">
+                <label for="sign-up-username">Please enter your Username</label>
+                <input  class="form-control text-center" type="text" name="username" placeholder="Your username">
+            </div>
+            <div class="form-group text-center">
+                <label for="sign-up-email" class="text-center">Your Email Address</label>
+                <input  class="form-control text-center" type="email" name="email" placeholder="Your Email">
+            </div>
+            <div class="form-group text-center">
+                <label for="sign-up-password" class="text-center">A Safe Password</label>
+                <input  class="form-control text-center" type="password" name="password" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="sign-up-email">Email</label>
-        <input type="email" name="email" placeholder="Your Email">
-    </div>
-    <div class="form-group">
-        <label for="sign-up-password">Password</label>
-        <input type="password" name="password" placeholder="Password">
-    </div>
-  <button type="submit">Sign Up</button>
-</form>
+</div>

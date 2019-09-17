@@ -4,9 +4,12 @@ const { Router } = require('express');
 const router = Router();
 const Places = require('./../models/places');
 
-
 router.get('/create', (req, res, next) => {
-  res.render('create');
+  if (!req.user_id) {
+    res.redirect('/sign-in');
+  } else {
+    res.render('create');
+  }
 });
 
 router.post('/places', (req, res, next) => {
