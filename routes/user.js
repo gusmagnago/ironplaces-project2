@@ -21,7 +21,6 @@ router.post('/sign-up', (req, res, next) => {
   const username = req.body.username;
   const email = req.body.email;
   const password = req.body.password;
-  //const role = req.body.role;
 
   bcrypt.hash(password, 10)
     .then(hash => {
@@ -79,11 +78,37 @@ router.post('/sign-in', (req, res, next) => {
     });
 });
 
+
 router.get('/dashboard', /* routeGuardMiddleware, */ (req, res, next) => {
-  console.log(req.session.user)
-  res.render('dashboard');
+  User.findById(req.session.user._id)
+  .then((user) => {
+    console.log(user);
+
+    res.render('dashboard', user);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 });
 
+<<<<<<< HEAD
+=======
+router.get('/profile', (req, res, next) => {
+  User.findById(req.session.user._id)
+  .then((user) => {
+    console.log(user);
+    res.render('profile', user);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+ });
+
+router.get('/create', (req, res, next) => {
+  res.render('create');
+});
+
+>>>>>>> cc4e00b5d34774852547c70537ea669865d362a9
 
 router.get("/sign-out", (req, res, next) => {
   req.session.destroy((err) => {
