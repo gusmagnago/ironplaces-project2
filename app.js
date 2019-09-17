@@ -17,6 +17,7 @@ const expressSession = require('express-session');
 const MongoStore = require('connect-mongo')(expressSession);
 const mongoose = require('mongoose');
 
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/user');
 const placesRouter = require('./routes/places');
@@ -57,6 +58,7 @@ app.use(expressSession({
     ttl: 24 * 60 * 60
   })
 }));
+mongoose.connect("mongodb://localhost/deploy-exercise");
 
 
 <<<<<<< HEAD
