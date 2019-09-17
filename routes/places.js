@@ -4,9 +4,8 @@ const { Router } = require('express');
 const router = Router();
 const Places = require('./../models/places');
 
-// const checkLogin = require('./../controllers/check-login');
 
-router.get('/create', /* checkLogin , */ (req, res, next) => {
+router.get('/create',(req, res, next) => {
     res.render('create');
 });
 
@@ -33,7 +32,7 @@ router.post('/places', (req, res, next) => {
   res.redirect('/places');
 });
 
-router.get('/places', /* checkLogin , */ (req, res, next) => {
+router.get('/places', (req, res, next) => {
   Places.find()
   .then(places => {
     console.log("IS this an array?",places);
@@ -41,6 +40,18 @@ router.get('/places', /* checkLogin , */ (req, res, next) => {
     res.render('places', {places});
   })
   .catch(error => {
+    console.log(error);
+  });
+});
+
+router.get('/find-places', (req, res, next) => {
+  User.findById(req.session.user._id)
+  .then((user) => {
+    console.log(user);
+
+    res.render('find-places', user);
+  })
+  .catch((error) => {
     console.log(error);
   });
 });

@@ -79,19 +79,6 @@ router.post('/sign-in', (req, res, next) => {
     });
 });
 
-
-router.get('/find-places', /* routeGuardMiddleware, */ (req, res, next) => {
-  User.findById(req.session.user._id)
-  .then((user) => {
-    console.log(user);
-
-    res.render('find-places', user);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-});
-
 router.get('/profile', checkLogin , (req, res, next) => {
   User.findById(req.session.user._id)
   .then((user) => {
