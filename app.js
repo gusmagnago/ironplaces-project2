@@ -7,7 +7,6 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const serveFavicon = require('serve-favicon');
-// const bodyParser = require('bodyParser');
 const hbs = require('hbs');
 
 const expressSession = require('express-session');
@@ -17,10 +16,11 @@ const mongoose = require('mongoose');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/user');
 const placesRouter = require('./routes/places');
+const checkLogin = require('./controllers/check-login');
 
 const app = express();
 
-hbs.registerPartials(__dirname + '/views/partials')
+hbs.registerPartials(__dirname + '/views/partials');
 
 // Setup view engine
 app.set('views', join(__dirname, 'views'));
@@ -43,7 +43,6 @@ app.use(sassMiddleware({
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-// app.use(bodyParser.urlencoded({ extended: true}));
 app.use(cookieParser());
 app.use(expressSession({
   secret: process.env.SESSION_SECRET,
@@ -70,7 +69,7 @@ hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
 
 app.use('/', indexRouter);
 app.use('/', usersRouter);
-app.use('/', placesRouter);
+app.use('/', checkLogin, placesRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

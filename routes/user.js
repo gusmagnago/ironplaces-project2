@@ -5,7 +5,7 @@ const router = Router();
 const User = require('./../models/user');
 const bcrypt = require('bcryptjs');
 
-
+const checkLogin = require('./../controllers/check-login');
 
 router.get('/', (req, res, next) => {
   res.render('sign-in');
@@ -92,7 +92,7 @@ router.get('/find-places', /* routeGuardMiddleware, */ (req, res, next) => {
   });
 });
 
-router.get('/profile', (req, res, next) => {
+router.get('/profile', checkLogin , (req, res, next) => {
   User.findById(req.session.user._id)
   .then((user) => {
     console.log(user);

@@ -4,12 +4,10 @@ const { Router } = require('express');
 const router = Router();
 const Places = require('./../models/places');
 
-router.get('/create', (req, res, next) => {
-  if (!req.user_id) {
-    res.redirect('/sign-in');
-  } else {
+// const checkLogin = require('./../controllers/check-login');
+
+router.get('/create', /* checkLogin , */ (req, res, next) => {
     res.render('create');
-  }
 });
 
 router.post('/places', (req, res, next) => {
@@ -32,13 +30,13 @@ router.post('/places', (req, res, next) => {
   .catch(error => {
     console.log('an error occuried trying to create a place', error);
   });
-  res.render('places');
+  res.redirect('/places');
 });
 
-router.get('/places', (req, res, next) => {
+router.get('/places', /* checkLogin , */ (req, res, next) => {
   Places.find()
   .then(places => {
-    console.log(places);
+    console.log("IS this an array?",places);
     
     res.render('places', {places});
   })
