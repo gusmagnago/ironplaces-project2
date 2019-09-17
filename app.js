@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const serveFavicon = require('serve-favicon');
+const hbs = require('hbs');
 
 const expressSession = require('express-session');
 const MongoStore = require('connect-mongo')(expressSession);
@@ -21,6 +22,7 @@ const app = express();
 app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -33,6 +35,7 @@ app.use(sassMiddleware({
   outputStyle: process.env.NODE_ENV === 'development' ? 'nested' : 'compressed',
   sourceMap: true
 }));
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -49,13 +52,17 @@ app.use(expressSession({
   })
 }));
 
-// app.use((req, res, next) => {
-//   // Access user information from within my templates
-//   res.locals.user = req.session.user;
-//   // Keep going to the next middleware or route handler
-//   next();
-// });
 
+app.use((req, res, next) => {
+  // Access user information from within my templates
+  res.locals.user = req.session.user;
+  // Keep going to the next middleware or route handler
+  next();
+});
+
+hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
+  return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
 
 app.use('/', indexRouter);
 app.use('/', usersRouter);
