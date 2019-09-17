@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const serveFavicon = require('serve-favicon');
-const bodyParser = require('bodyParser');
+// const bodyParser = require('bodyParser');
 const hbs = require('hbs');
 
 const expressSession = require('express-session');
@@ -41,7 +41,7 @@ app.use(sassMiddleware({
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(bodyParser.urlencoded({ extended: true}));
+// app.use(bodyParser.urlencoded({ extended: true}));
 app.use(cookieParser());
 app.use(expressSession({
   secret: process.env.SESSION_SECRET,
@@ -53,7 +53,7 @@ app.use(expressSession({
     ttl: 24 * 60 * 60
   })
 }));
-mongoose.connect("mongodb://localhost/deploy-exercise");
+//mongoose.connect("mongodb://localhost/ironplaces-database");
 
 app.use((req, res, next) => {
   res.locals.user = req.session.user;

@@ -73,6 +73,7 @@ router.post('/sign-in', (req, res, next) => {
       }
     })
     .catch(error => {
+      
       console.log('signin signup error', error);
       next(error);
     });
@@ -91,8 +92,6 @@ router.get('/dashboard', /* routeGuardMiddleware, */ (req, res, next) => {
   });
 });
 
-<<<<<<< HEAD
-=======
 router.get('/profile', (req, res, next) => {
   User.findById(req.session.user._id)
   .then((user) => {
@@ -108,7 +107,6 @@ router.get('/create', (req, res, next) => {
   res.render('create');
 });
 
->>>>>>> cc4e00b5d34774852547c70537ea669865d362a9
 
 router.get("/sign-out", (req, res, next) => {
   req.session.destroy((err) => {
