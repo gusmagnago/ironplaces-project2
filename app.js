@@ -7,15 +7,16 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const serveFavicon = require('serve-favicon');
+// const bodyParser = require('bodyParser');
 const hbs = require('hbs');
 
 const expressSession = require('express-session');
 const MongoStore = require('connect-mongo')(expressSession);
 const mongoose = require('mongoose');
 
-
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/user');
+const placesRouter = require('./routes/places');
 
 const app = express();
 
@@ -37,10 +38,10 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+// app.use(bodyParser.urlencoded({ extended: true}));
 app.use(cookieParser());
 app.use(expressSession({
   secret: process.env.SESSION_SECRET,
@@ -52,8 +53,9 @@ app.use(expressSession({
     ttl: 24 * 60 * 60
   })
 }));
-//mongoose.connect("mongodb://localhost/deploy-exercise");
 
+
+//mongoose.connect("mongodb://localhost/ironplaces-database");
 
 app.use((req, res, next) => {
   res.locals.user = req.session.user;
@@ -66,6 +68,7 @@ hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
 
 app.use('/', indexRouter);
 app.use('/', usersRouter);
+app.use('/', placesRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
