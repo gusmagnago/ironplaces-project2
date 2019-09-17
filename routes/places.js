@@ -2,9 +2,13 @@
 
 const { Router } = require('express');
 const router = Router();
+const Places = require('./../models/places');
 
-// router.get('/', (req, res, next) => {
-//   res.render('index', { title: 'Hello World!' });
-// });
+
+router.get('/places', (req, res, next) => {
+  const name = req.body.name;
+  const address = req.body.address;
+  const description = req.body.description
+})
 
 module.exports = router;
