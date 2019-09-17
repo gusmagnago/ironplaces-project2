@@ -55,6 +55,8 @@ app.use(expressSession({
     ttl: 24 * 60 * 60
   })
 }));
+
+
 //mongoose.connect("mongodb://localhost/ironplaces-database");
 
 app.use((req, res, next) => {
