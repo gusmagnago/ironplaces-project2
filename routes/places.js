@@ -34,9 +34,10 @@ router.post('/places', (req, res, next) => {
 
 router.get('/places', (req, res, next) => {
   Places.find()
-  .then((places) => {
+  .then(places => {
     console.log(places);
-    res.render('places', places);
+    
+    res.render('places', {places});
   })
   .catch(error => {
     console.log(error);

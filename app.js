@@ -20,6 +20,8 @@ const placesRouter = require('./routes/places');
 
 const app = express();
 
+hbs.registerPartials(__dirname + '/views/partials')
+
 // Setup view engine
 app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'hbs');

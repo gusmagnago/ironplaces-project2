@@ -1,10 +1,13 @@
 <h1>created places</h1>
-
-<div class="container">
-  {{#each places}}
-  <p>{{places.name}}</p>
-  {{/each}}
+{{#each places}}
+  <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{this.name}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{this.address}}</h6>
+    <p class="card-text">{{this.city}}</p>
+    <p class="card-text">{{this.zip}}</p>
+    <p class="card-text">{{this.desription}}</p>
+  </div>
 </div>
-
-  
+{{/each}}
 
