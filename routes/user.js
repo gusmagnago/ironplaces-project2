@@ -21,7 +21,7 @@ router.post('/sign-up', (req, res, next) => {
   const username = req.body.username;
   const email = req.body.email;
   const password = req.body.password;
-  const role = req.body.role;
+  //const role = req.body.role;
 
   bcrypt.hash(password, 10)
     .then(hash => {
@@ -29,14 +29,14 @@ router.post('/sign-up', (req, res, next) => {
         username,
         email,
         passwordHash: hash,
-        role
+        role: 'STUDENT'
       });
     })
     .then(user => {
       req.session.user = {
         _id: user._id
       };
-      res.redirect('/');
+      res.redirect('/dashboard');
     })
     .catch(error => {
       console.log('There was an error in the sign up process.', error);
@@ -50,6 +50,7 @@ router.get('/sign-in', (req, res, next) => {
 router.post('/sign-in', (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
+  
   
   let auxUser;
 
@@ -69,7 +70,7 @@ router.post('/sign-in', (req, res, next) => {
         req.session.user = {
           _id: auxUser._id
         };
-        res.redirect('dashboard');
+        res.redirect('/dashboard');
       }
     })
     .catch(error => {
@@ -79,6 +80,7 @@ router.post('/sign-in', (req, res, next) => {
 });
 
 router.get('/dashboard', /* routeGuardMiddleware, */ (req, res, next) => {
+  console.log(req.session.user)
   res.render('dashboard');
 });
 
@@ -87,10 +89,11 @@ router.get('/create', (req, res, next) => {
 });
 
 
-
-router.post('sign-ou', (req, res, next) => {
-  req.session.destroy();
-  res.redirect('/sign-in');
+router.get("/sign-out", (req, res, next) => {
+  req.session.destroy((err) => {
+    res.redirect("/sign-in");
+  });
 });
 
 module.exports = router;
+
