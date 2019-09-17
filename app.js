@@ -52,13 +52,11 @@ app.use(expressSession({
     ttl: 24 * 60 * 60
   })
 }));
-mongoose.connect("mongodb://localhost/deploy-exercise");
+//mongoose.connect("mongodb://localhost/deploy-exercise");
 
 
 app.use((req, res, next) => {
-  // Access user information from within my templates
   res.locals.user = req.session.user;
-  // Keep going to the next middleware or route handler
   next();
 });
 
