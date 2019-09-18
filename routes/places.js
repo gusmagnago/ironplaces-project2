@@ -3,7 +3,7 @@
 const { Router } = require('express');
 const router = Router();
 const Places = require('./../models/places');
-const User = require('./../models/user');
+// const User = require('./../models/user');
 
 
 router.get('/create',(req, res, next) => {
@@ -16,13 +16,15 @@ router.post('/places', (req, res, next) => {
   const city = req.body.city;
   const zip = req.body.zip;
   const description = req.body.description;
+  const category = req.body.category;
   
   Places.create({
     name,
     address,
     city,
     zip,
-    description
+    description, 
+    category
   })
   .then(places => {
     console.log('a place were created', places);
@@ -43,18 +45,6 @@ router.get('/places', (req, res, next) => {
   });
 });
 
-/* router.get('/find-places', (req, res, next) => {
-  User.findById(req.session.user._id)
-  .then((user) => {
-    console.log(user);
-    
-    res.render('find-places', user);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
-}); */
-
 router.get('/edit-place/:id',(req, res, next) => {
   const id = req.params.id;
   Places.findById(id)
@@ -65,16 +55,6 @@ router.get('/edit-place/:id',(req, res, next) => {
     console.log("there was an error here!!!", error);
   });
 });
-
-/* router.get('/edit-place', (req, res, next) => {
-  Places.findById()
-  .then((places) => {
-    res.render('edit-place', places);
-  })
-  .catch(error => {
-    console.log("there was an error here!!!", error);
-  });
-}); */
 
 router.post('/edit-place/:id', (req, res, next) => {
   const id = req.params.id;
@@ -99,6 +79,32 @@ router.post('/edit-place/:id', (req, res, next) => {
   })
   .catch(error => {
     console.log('error trying to edit', error);
+  });
+});
+
+router.get('/delete-place/:id', (req, res, next) => {
+  const id = req.params.id;
+  const name = req.body.name;
+  const address = req.body.address;
+  const city = req.body.city;
+  const zip = req.body.zip;
+  const description = req.body.description;
+  const category = req.body.category;
+  
+  Places.findByIdAndDelete(id, {
+    name,
+    address,
+    city,
+    zip,
+    description,
+    category
+  })
+  .then(places => {
+    console.log('weel done!', places);
+    res.render('delete-place');
+  })
+  .catch(error => {
+    console.log('there was an error when you tried to delete', error);
   });
 });
 
