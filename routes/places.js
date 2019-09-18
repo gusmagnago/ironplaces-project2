@@ -7,7 +7,7 @@ const User = require('./../models/user');
 
 
 router.get('/create',(req, res, next) => {
-    res.render('create');
+  res.render('create');
 });
 
 router.post('/places', (req, res, next) => {
@@ -35,9 +35,7 @@ router.post('/places', (req, res, next) => {
 
 router.get('/places', (req, res, next) => {
   Places.find()
-  .then(places => {
-    console.log("IS this an array?",places);
-    
+  .then(places => {  
     res.render('places', {places});
   })
   .catch(error => {
@@ -45,7 +43,7 @@ router.get('/places', (req, res, next) => {
   });
 });
 
-router.get('/find-places', (req, res, next) => {
+/* router.get('/find-places', (req, res, next) => {
   User.findById(req.session.user._id)
   .then((user) => {
     console.log(user);
@@ -55,15 +53,53 @@ router.get('/find-places', (req, res, next) => {
   .catch((error) => {
     console.log(error);
   });
+}); */
+
+router.get('/edit-place/:id',(req, res, next) => {
+  const id = req.params.id;
+  Places.findById(id)
+  .then((places) => {
+    res.render('edit-place', places);
+  })
+  .catch(error => {
+    console.log("there was an error here!!!", error);
+  });
 });
 
-/* router.get('places/:placesId/delete', (req, res, next) => {
-  const placesId = req.params.placesId;
-
-  Places.findByIdAndDelete(placesId)
-    .then(() => {
-    res.redirect('/places');
+/* router.get('/edit-place', (req, res, next) => {
+  Places.findById()
+  .then((places) => {
+    res.render('edit-place', places);
+  })
+  .catch(error => {
+    console.log("there was an error here!!!", error);
   });
 }); */
+
+router.post('/edit-place/:id', (req, res, next) => {
+  const id = req.params.id;
+  const name = req.body.name;
+  const address = req.body.address;
+  const city = req.body.city;
+  const zip = req.body.zip;
+  const description = req.body.description;
+  const type = req.body.type;
+  
+  Places.findByIdAndUpdate(id, {
+    name,
+    address,
+    city,
+    zip,
+    description,
+    type
+  })
+  .then(places => {
+    console.log('your places has been edited', places);
+    res.redirect('/places');
+  })
+  .catch(error => {
+    console.log('error trying to edit', error);
+  });
+});
 
 module.exports = router;
