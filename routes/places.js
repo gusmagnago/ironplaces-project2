@@ -6,6 +6,8 @@ const Places = require('./../models/places');
 // const User = require('./../models/user');
 
 
+// ----------- CREATE PLACES ROUTE --------------
+
 router.get('/create',(req, res, next) => {
   res.render('create');
 });
@@ -28,11 +30,11 @@ router.post('/places', (req, res, next) => {
   })
   .then(places => {
     console.log('a place were created', places);
+    res.redirect('/places');
   })
   .catch(error => {
     console.log('an error occuried trying to create a place', error);
   });
-  res.redirect('/places');
 });
 
 router.get('/places', (req, res, next) => {
@@ -44,6 +46,10 @@ router.get('/places', (req, res, next) => {
     console.log(error);
   });
 });
+
+
+
+// ----------- END OF CREATE PLACES ROUTES--------------
 
 
  // ----------- FIND PLACES ROUTE --------------
@@ -58,8 +64,9 @@ router.get('/find-places',(req, res, next) => {
   });
 });
 
-router.post('/find-places/restaurants',(req, res, next) => {
-  Places.find({category:"restaurants"})
+router.get('/find-places/:category',(req, res, next) => {
+  const category = req.params.category;
+  Places.find({category: category})
   .then(places => {  
     console.log(places);
     res.render('find-places', {places});
@@ -69,27 +76,7 @@ router.post('/find-places/restaurants',(req, res, next) => {
   });
 });
 
-router.post('/find-places/drink-dance',(req, res, next) => {
-  Places.find({category:"drink and dance"})
-  .then(places => {  
-    console.log(places);
-    res.render('find-places', {places});
-  })
-  .catch(error => {
-    console.log(error);
-  });
-});
-
-router.post('/find-places/useful',(req, res, next) => {
-  Places.find({category:"useful"})
-  .then(places => {  
-    console.log(places);
-    res.render('find-places', {places});
-  })
-  .catch(error => {
-    console.log(error);
-  });
-});
+// ----------- END OF FIND PLACES ROUTES--------------
 
 
  // ----------- EDIT PLACES ROUTE --------------

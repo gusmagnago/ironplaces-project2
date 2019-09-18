@@ -17,10 +17,20 @@
         <label for="zip">Zip</label>
         <input type="numbers" class="form-control" name="zip" value="{{zip}}">
       </div>
-        <div class="form-group">
-    <label for="description">Describe the place:</label>
-    <textarea class="form-control" rows="3" value="{{description}}"></textarea>
-  </div>
-      <button type="edit" class="btn btn-primary">Edit!</button>
+      <div class="form-group col-md-4">
+        <label for="category">Category:</label>
+        <select id="category" name="category" class="form-control">
+          <option selected>Choose...</option>
+          <option>restaurants</option>
+          <option>drink-dance</option>
+          <option>useful</option>
+        </select>
+      </div>
+    </div>  
+    <div class="form-group">  
+      <label for="description">Describe the place:</label>
+      <textarea class="form-control" rows="3" value="{{description}}"></textarea>
+    </div>
+    <button type="edit" class="btn btn-primary">Edit!</button>
   </form>
 </div>
