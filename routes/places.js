@@ -19,6 +19,7 @@ router.post('/places', (req, res, next) => {
   const zip = req.body.zip;
   const description = req.body.description;
   const category = req.body.category;
+  const link = req.body.link;
   
   Places.create({
     name,
@@ -26,7 +27,8 @@ router.post('/places', (req, res, next) => {
     city,
     zip,
     description, 
-    category
+    category, 
+    link
   })
   .then(places => {
     console.log('a place were created', places);
@@ -46,8 +48,6 @@ router.get('/places', (req, res, next) => {
     console.log(error);
   });
 });
-
-
 
 // ----------- END OF CREATE PLACES ROUTES--------------
 
