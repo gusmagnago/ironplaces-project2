@@ -25,8 +25,15 @@ const placesSchema = new mongoose.Schema({
   category: {
     type: String, 
     enum: ['restaurants', 'drink and dance', 'useful']
+  },
+  location: {
+    type: {
+      type: String, 
+      coordinates: [Number]
+    }
   }
 });
 
+placesSchema.index({ location: '2dsphere' });
 module.exports = mongoose.model('Places', placesSchema);
 
