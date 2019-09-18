@@ -3,6 +3,7 @@
 const { Router } = require('express');
 const router = Router();
 const Places = require('./../models/places');
+const User = require('./../models/user');
 
 
 router.get('/create',(req, res, next) => {
