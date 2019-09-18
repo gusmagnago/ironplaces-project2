@@ -1,21 +1,19 @@
 <div class="container d-flex justify-content-center">
-  <div class="card" style="width: 25rem;">
-    <img src="/images/logo_ironplaces.png" class="card-img-top mx-auto" alt="ironplaces-logo" style="width: 15rem;">
+  <div class="card p-3 border-dark" style="width: 25rem;">
+    <img src="/images/logo_ironplaces.png" class="card-img-top mx-auto" alt="ironplaces-logo" style="width: 14rem;">
     <div class="card-body text-center">
-      <h2>Find places around Ironhack</h2>
+      <h4 class="mb-1">Find places around Ironhack</h4>
       <form method="POST" action="/sign-in">
-        <div class="form-group">
-          <label for="sign-up-email"></label>
-          <input type="email" name="email" placeholder="Email">
+        <div class="form-group my-4">
+          <input type="email" name="email" placeholder="Email" class="form-control text-center">
         </div>
-        <div class="form-group">
-          <label for="sign-up-password"></label>
-          <input type="password" name="password" placeholder="Password">
+        <div class="form-group my-4">
+          <input type="password" name="password" placeholder="Password" class="form-control text-center">
         </div>
-        <button class="btn btn-primary">Sign-in</button>
+        <button class="btn btn-dark">Sign-in</button>
       </form>
-      <p>Please enter with your e-mail and password in order to access your private area.</p>
-      <span>Click <a href="/sign-up">here</a> if you are not a user yet</span>
+      <p class="my-2">Please enter your e-mail and password in order to access your private area.</p>
+      <span> If you are not a user, click <a href="/sign-up">here</a> to Sign up.</span>
     </div>
   </div>
 </div>
