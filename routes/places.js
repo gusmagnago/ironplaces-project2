@@ -56,6 +56,17 @@ router.get('/edit-place/:id',(req, res, next) => {
   });
 });
 
+router.get('/find-places/:category.restaurants', (req, res, next) => {
+  const category = req.paramas.gategory.restaurants;
+  Places.find(category)
+  .then((places) => {
+    res.render('restaurants', places);
+  })
+  .catch(error => {
+    console.log('you have an error here!', error);
+  });
+});
+
 router.post('/edit-place/:id', (req, res, next) => {
   const id = req.params.id;
   const name = req.body.name;
