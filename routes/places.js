@@ -45,6 +45,55 @@ router.get('/places', (req, res, next) => {
   });
 });
 
+
+ // ----------- FIND PLACES ROUTE --------------
+
+router.get('/find-places',(req, res, next) => {
+  Places.find()
+  .then(places => {  
+    res.render('find-places', {places});
+  })
+  .catch(error => {
+    console.log(error);
+  });
+});
+
+router.post('/find-places/restaurants',(req, res, next) => {
+  Places.find({category:"restaurants"})
+  .then(places => {  
+    console.log(places);
+    res.render('find-places', {places});
+  })
+  .catch(error => {
+    console.log(error);
+  });
+});
+
+router.post('/find-places/drink-dance',(req, res, next) => {
+  Places.find({category:"drink and dance"})
+  .then(places => {  
+    console.log(places);
+    res.render('find-places', {places});
+  })
+  .catch(error => {
+    console.log(error);
+  });
+});
+
+router.post('/find-places/useful',(req, res, next) => {
+  Places.find({category:"useful"})
+  .then(places => {  
+    console.log(places);
+    res.render('find-places', {places});
+  })
+  .catch(error => {
+    console.log(error);
+  });
+});
+
+
+ // ----------- EDIT PLACES ROUTE --------------
+
 router.get('/edit-place/:id',(req, res, next) => {
   const id = req.params.id;
   Places.findById(id)
@@ -74,7 +123,7 @@ router.post('/edit-place/:id', (req, res, next) => {
   const city = req.body.city;
   const zip = req.body.zip;
   const description = req.body.description;
-  const type = req.body.type;
+  const category = req.body.category;
   
   Places.findByIdAndUpdate(id, {
     name,
@@ -82,7 +131,7 @@ router.post('/edit-place/:id', (req, res, next) => {
     city,
     zip,
     description,
-    type
+    category
   })
   .then(places => {
     console.log('your places has been edited', places);
@@ -92,7 +141,10 @@ router.post('/edit-place/:id', (req, res, next) => {
     console.log('error trying to edit', error);
   });
 });
+ // ----------- END OF EDIT PLACES ROUTES--------------
 
+
+// ----------- DELETE PLACE ROUTE --------------
 router.get('/delete-place/:id', (req, res, next) => {
   const id = req.params.id;
   const name = req.body.name;
