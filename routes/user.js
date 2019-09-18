@@ -117,6 +117,25 @@ router.get('/edit-user', checkLogin, (req, res, next) => {
     });
  });
 
+
+ router.get("/delete-user", (req, res, next) => {
+  const username = req.body.username;
+  const email = req.body.email;
+
+  User.deleteOne({_id: req.session.user._id}, {
+    username: username,
+    email:email
+  })
+    .then(user=> {
+      console.log(user);
+      res.render('delete-user');
+    })
+    .catch(error => {
+      console.log('Error deleting user profile', error);
+    });
+});
+
+
 router.get("/sign-out", (req, res, next) => {
   req.session.destroy((err) => {
     res.redirect("/sign-in");

@@ -1,9 +1,11 @@
 <div class="container d-flex justify-content-center">
-    <div class="card border-0" style="width: 25rem;">
-        <div class="card-body text-center"></div>
-        <form method="POST" action="/sign-up">
+  <div class="card p-2 border-dark" style="width: 25rem;">
+    <img src="/images/logo_ironplaces.png" class="card-img-top mx-auto" alt="ironplaces-logo" style="width: 14rem;">
+    <div class="card-body text-center">
+      <h4 class="mb-4">Sign Up Form</h4>
+      <form method="POST" action="/sign-up">
             <div class="form-group text-center">
-                <label for="sign-up-username">Please enter your Username</label>
+                <label for="sign-up-username">Please enter an Username</label>
                 <input  class="form-control text-center" type="text" name="username" placeholder="Your username">
             </div>
             <div class="form-group text-center">
@@ -14,8 +16,8 @@
                 <label for="sign-up-password" class="text-center">A Safe Password</label>
                 <input  class="form-control text-center" type="password" name="password" placeholder="Password">
             </div>
-            <button type="submit" class="btn btn-primary">Sign Up</button>
+            <button type="submit" class="btn btn-dark">Sign Up</button>
         </form>
-        </div>
     </div>
+  </div>
 </div>
