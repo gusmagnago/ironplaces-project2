@@ -21,6 +21,10 @@ const placesSchema = new mongoose.Schema({
   },
   description: {
      type: String
+  }, 
+  type: {
+    type: String, 
+    enum: ['restaurants', 'drink and dance', 'useful']
   }
 });
 

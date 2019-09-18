@@ -50,7 +50,6 @@ router.post('/sign-in', (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
   
-  
   let auxUser;
 
   User.findOne({ email })
@@ -69,7 +68,7 @@ router.post('/sign-in', (req, res, next) => {
         req.session.user = {
           _id: auxUser._id
         };
-        res.redirect('/find-places');
+        res.redirect('find-places');
       }
     })
     .catch(error => {

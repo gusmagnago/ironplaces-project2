@@ -3,6 +3,7 @@
 const { Router } = require('express');
 const router = Router();
 const Places = require('./../models/places');
+const User = require('./../models/user');
 
 
 router.get('/create',(req, res, next) => {
@@ -15,7 +16,7 @@ router.post('/places', (req, res, next) => {
   const city = req.body.city;
   const zip = req.body.zip;
   const description = req.body.description;
-
+  
   Places.create({
     name,
     address,
@@ -48,12 +49,21 @@ router.get('/find-places', (req, res, next) => {
   User.findById(req.session.user._id)
   .then((user) => {
     console.log(user);
-
+    
     res.render('find-places', user);
   })
   .catch((error) => {
     console.log(error);
   });
 });
+
+/* router.get('places/:placesId/delete', (req, res, next) => {
+  const placesId = req.params.placesId;
+
+  Places.findByIdAndDelete(placesId)
+    .then(() => {
+    res.redirect('/places');
+  });
+}); */
 
 module.exports = router;
