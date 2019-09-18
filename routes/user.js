@@ -35,7 +35,7 @@ router.post('/sign-up', (req, res, next) => {
       req.session.user = {
         _id: user._id
       };
-      res.redirect('/dashboard');
+      res.redirect('/find-places');
     })
     .catch(error => {
       console.log('There was an error in the sign up process.', error);
@@ -87,6 +87,34 @@ router.get('/profile', checkLogin , (req, res, next) => {
   .catch((error) => {
     console.log(error);
   });
+ });
+
+router.get('/edit-user', checkLogin, (req, res, next) => {
+  User.findById(req.session.user._id)
+  .then((user) => {
+    console.log(user);
+    res.render('edit-user', user);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+ });
+
+ router.post('/edit-user',(req, res, next) => {
+  const username = req.body.username;
+  const email = req.body.email;
+
+  User.updateOne({_id: req.session.user._id}, {
+    username: username,
+    email:email
+  })
+    .then(user=> {
+      console.log(user);
+      res.redirect('/profile');
+    })
+    .catch(error => {
+      console.log('Error updating user profile', error);
+    });
  });
 
 router.get("/sign-out", (req, res, next) => {
