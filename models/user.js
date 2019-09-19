@@ -1,6 +1,8 @@
 'use strict';
 
 const mongoose = require('mongoose');
+const Object = mongoose.Schema.Types.ObjectId;
+
 
 const schema = new mongoose.Schema({
   name: {
@@ -21,6 +23,10 @@ const schema = new mongoose.Schema({
     type: String, 
     required: true
   },
+  _createdPlaces: [{
+    type: Object,
+    ref: "Places"
+  }],
   role: {
     type: String,
     enum : ['ADMIN', 'STUDENT']
