@@ -3,6 +3,9 @@
 const mongoose = require('mongoose');
 
 const placesSchema = new mongoose.Schema({
+  // imgURL: {
+  //   type: String,
+  // }
   name: {
     type: String,
     required: true

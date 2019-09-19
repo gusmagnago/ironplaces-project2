@@ -67,7 +67,8 @@ router.post('/sign-in', (req, res, next) => {
         res.redirect('error');
       } else {
         req.session.user = {
-          _id: auxUser._id
+          _id: auxUser._id,
+          role: auxUser.role
         };
         res.redirect('find-places');
       }
