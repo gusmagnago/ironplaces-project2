@@ -11,13 +11,13 @@
   </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="d-flex flex-row">
+<div class="container no-gutters">
+  <div class="row no-gutters">
+   
 {{#each places}}
-        <div class="card col-4 mx-2">
+        <div class="card col-4 border-0 p-2">
           {{!-- <img src={{this.image_url}} class="card-img-top mx-auto" style="width: 20%"> --}}
-          <div class="card-body">
+          <div class="card-body border rounded">
             <h5 class="card-title">{{this.name}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{this.address}}</h6>
             <p class="card-text">{{this.city}}</p>
@@ -26,11 +26,13 @@
             <p class="card-text">{{this.category}}</p>
           </div>
           {{#ifEquals ../user.role "ADMIN"}}
-          <a class="btn btn-outline-primary" href="/edit-place/{{this._id}}">Edit</a>
-          <a class="btn btn-outline-danger" href="/delete-place/{{this._id}}">Delete</a>
+          <div class="row p-2">
+          <a class="btn btn-outline-primary col mx-2" href="/edit-place/{{this._id}}">Edit</a>
+          <a class="btn btn-outline-danger col mx-2" href="/delete-place/{{this._id}}">Delete</a>
+          </div>
           {{/ifEquals}}
         </div>
 {{/each}}
-    </div>  
+     
   </div>
 </div>
