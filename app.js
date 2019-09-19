@@ -57,8 +57,6 @@ app.use(expressSession({
 }));
 
 
-//mongoose.connect("mongodb://localhost/ironplaces-database");
-
 app.use((req, res, next) => {
   res.locals.user = req.session.user
 if (req.session.user) {
