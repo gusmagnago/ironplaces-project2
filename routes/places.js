@@ -16,7 +16,7 @@ router.post('/find-places', (req, res, next) => {
   const name = req.body.name;
   const address = req.body.address;
   const city = req.body.city;
-  const zip = req.body.zip;
+  const contact = req.body.contact;
   const description = req.body.description;
   const category = req.body.category;
   const link = req.body.link;
@@ -25,7 +25,7 @@ router.post('/find-places', (req, res, next) => {
     name,
     address,
     city,
-    zip,
+    contact,
     description, 
     category, 
     link
@@ -55,9 +55,9 @@ router.post('/find-places', (req, res, next) => {
  // ----------- FIND PLACES ROUTE --------------
 
 router.get('/find-places',(req, res, next) => {
-  Places.findOneAndUpdate({city: req.session.user.city})
+  Places.find({city: req.session.user.city})
   .then(places => {  
-    console.log(req.user);
+    console.log(req.session.user);
     res.render('find-places', {places});
   })
   .catch(error => {
@@ -101,7 +101,7 @@ router.post('/edit-place/:id', (req, res, next) => {
   const name = req.body.name;
   const address = req.body.address;
   const city = req.body.city;
-  const zip = req.body.zip;
+  const contact = req.body.contact;
   const description = req.body.description;
   const category = req.body.category;
   
@@ -109,7 +109,7 @@ router.post('/edit-place/:id', (req, res, next) => {
     name,
     address,
     city,
-    zip,
+    contact,
     description,
     category
   })
@@ -130,7 +130,7 @@ router.get('/delete-place/:id', (req, res, next) => {
   const name = req.body.name;
   const address = req.body.address;
   const city = req.body.city;
-  const zip = req.body.zip;
+  const contact = req.body.contact;
   const description = req.body.description;
   const category = req.body.category;
   
@@ -138,7 +138,7 @@ router.get('/delete-place/:id', (req, res, next) => {
     name,
     address,
     city,
-    zip,
+    contact,
     description,
     category
   })

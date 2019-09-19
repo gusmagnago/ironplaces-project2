@@ -8,6 +8,7 @@ const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const serveFavicon = require('serve-favicon');
 const hbs = require('hbs');
+const User = require('./models/user');
 
 const expressSession = require('express-session');
 const MongoStore = require('connect-mongo')(expressSession);
@@ -59,8 +60,18 @@ app.use(expressSession({
 //mongoose.connect("mongodb://localhost/ironplaces-database");
 
 app.use((req, res, next) => {
-  res.locals.user = req.session.user;
+  res.locals.user = req.session.user
+if (req.session.user) {
+User.findById({_id: req.session.user._id})
+.then(user => {
+  req.session.user = user
+  next()
+})
+.catch(err => console.log(err));
+}
+else {
   next();
+}
 });
 
 hbs.registerHelper('ifEquals', function(arg1, arg2, options) {
