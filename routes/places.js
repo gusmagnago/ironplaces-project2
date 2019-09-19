@@ -93,7 +93,7 @@ router.get('/edit-place/:id',(req, res, next) => {
 });
 
 router.get('/find-places/:category.restaurants', (req, res, next) => {
-  const category = req.paramas.gategory.restaurants;
+  const category = req.params.category.restaurants;
   Places.find(category)
   .then((places) => {
     res.render('restaurants', places);
