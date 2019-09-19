@@ -14,7 +14,7 @@
           <h6 class="card-subtitle mb-2 text-muted">{{this.address}}</h6>
           <p class="card-text">{{this.city}} {{this.contact}}</p>
           <p class="card-text">{{this.description}}</p>
-          <a class="card-text" href="{{this.link}}">{{this.link}}</a>
+          <a class="card-text btn btn-outline-primary btn-sm mb-2" href="{{this.link}}" target="_blank">Open Map</a>
           <p class="card-text text-primary">{{this.category}}</p>
         </div>
         {{#ifEquals ../user.role "ADMIN"}}

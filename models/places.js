@@ -21,7 +21,8 @@ const placesSchema = new mongoose.Schema({
   },
   contact: {
     type: Number,
-    required: true
+    required: true,
+    trim: true
   },
   description: {
      type: String
