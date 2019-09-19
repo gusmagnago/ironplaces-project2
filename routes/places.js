@@ -3,7 +3,7 @@
 const { Router } = require('express');
 const router = Router();
 const Places = require('./../models/places');
-// const User = require('./../models/user');
+const User = require('./../models/user');
 
 
 // ----------- CREATE PLACES ROUTE --------------
@@ -31,23 +31,23 @@ router.post('/find-places', (req, res, next) => {
     link
   })
   .then(places => {
-    console.log('a place were created', places);
-    res.redirect('/find-places');
+    console.log('a places was updated', places);
+
+    User.findByIdAndUpdate(req.session.user._id, {
+     $push: {_createdPlaces: places._id}
+    })
+    .then((user)=> {
+      console.log('a user was updated', user);
+      res.redirect('/find-places');
+    })
+    .catch(error => {
+      console.log('an error occuried trying to update a user', error);
+    });
   })
   .catch(error => {
     console.log('an error occuried trying to create a place', error);
   });
 });
-
-// router.get('/places', (req, res, next) => {
-//   Places.find()
-//   .then(places => {  
-//     res.render('places', {places});
-//   })
-//   .catch(error => {
-//     console.log(error);
-//   });
-// });
 
 // ----------- END OF CREATE PLACES ROUTES--------------
 
@@ -122,7 +122,7 @@ router.post('/edit-place/:id', (req, res, next) => {
   })
   .then(places => {
     console.log('your places has been edited', places);
-    res.redirect('/places');
+    res.redirect('/find-places');
   })
   .catch(error => {
     console.log('error trying to edit', error);

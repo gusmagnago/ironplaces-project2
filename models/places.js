@@ -28,7 +28,7 @@ const placesSchema = new mongoose.Schema({
   }, 
   category: {
     type: String, 
-    enum: ['restaurants', 'drink and dance', 'useful']
+    enum: ['restaurants', 'drink-dance', 'useful']
   }, 
   link: {
     type: String

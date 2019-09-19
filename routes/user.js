@@ -85,6 +85,7 @@ router.post('/sign-in', (req, res, next) => {
 
 router.get('/profile', checkLogin , (req, res, next) => {
   User.findById(req.session.user._id)
+  .populate("_createdPlaces")
   .then((user) => {
     console.log(user);
     res.render('profile', user);
