@@ -16,7 +16,8 @@ const placesSchema = new mongoose.Schema({
   },
   city: {
     type: String,
-    required: true
+    required: true,
+    enum: ['Amsterdam', 'Barcelona', 'Berlin', 'Lisbon', 'Madrid', 'Miami', 'Mexico City', 'Paris', 'São Paulo']
   },
   zip: {
     type: String,

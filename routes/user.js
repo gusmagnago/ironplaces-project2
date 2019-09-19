@@ -14,11 +14,11 @@ router.get('/', checkUser, (req, res, next) => {
 });
 
 
-router.get('/sign-up', (req, res, next) => {
+router.get('/sign-up', checkUser, (req, res, next) => {
   res.render('sign-up');
 });
 
-router.post('/sign-up', (req, res, next) => {
+router.post('/sign-up', checkUser, (req, res, next) => {
   const name = req.body.name;
   const lastName = req.body.lastName;
   const email = req.body.email;
@@ -46,7 +46,7 @@ router.post('/sign-up', (req, res, next) => {
     });
 });
 
-router.get('/sign-in', (req, res, next) => {
+router.get('/sign-in', checkUser, (req, res, next) => {
   res.render('sign-in');
 });
 
