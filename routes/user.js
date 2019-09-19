@@ -6,8 +6,9 @@ const User = require('./../models/user');
 const bcrypt = require('bcryptjs');
 
 const checkLogin = require('./../controllers/check-login');
+const checkUser = require('./../controllers/check-user');
 
-router.get('/', (req, res, next) => {
+router.get('/', checkUser, (req, res, next) => {
   res.render('sign-in');
   // res.redirect('sign-in');
 });
