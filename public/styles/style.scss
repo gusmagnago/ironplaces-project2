@@ -1,12 +1,12 @@
 $font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $primary: #1D7BB4;
-$link-color: #00b7ff;
+$link-color: #1D7BB4;
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 body {
   margin: 0;
-  padding: 50px;
+  padding: 0px;
   font-family: $font-sans;
 }
 
