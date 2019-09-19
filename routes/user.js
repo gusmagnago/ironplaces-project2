@@ -33,7 +33,8 @@ router.post('/sign-up', (req, res, next) => {
     })
     .then(user => {
       req.session.user = {
-        _id: user._id
+        _id: user._id,
+        role: user.role
       };
       res.redirect('/find-places');
     })
