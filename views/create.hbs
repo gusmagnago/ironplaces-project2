@@ -1,47 +1,51 @@
+<<<<<<< HEAD
 <div class="container d-flex justify-content-center">
+=======
+<div class="container d-flex justify-content-center mt-5">
+>>>>>>> 38f595fe2805efa7e6c92179b139235809eba923
   <div class="row">
-    <div class="col-5">
+    <div class="col-4 px-5">
       <img src="/images/logo_ironplaces.png" alt="ironplaces-logo">
-      <h1 class="mt-4">Share a place that you like (or not!) with all ironhackers!</h1>
-  </div>
-  <form method="POST" action="/places" class="col-7">
-    <div class="form-group">
-      <label for="name">Place's Name</label>
-      <input type="name" class="form-control" name="name">
+      <h1 class="mt-3 text-primary mt-5 font-weight-light">Share a place that you like (or not!) with all ironhackers!</h1>
     </div>
-    <div class="form-group">
-      <label for="address">Address</label>
-      <input type="text" class="form-control" name="address" placeholder="St.stName 123">
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="city">City</label>
-        <input type="text" class="form-control" name="city">
+    <form method="POST" action="/find-places" class="col-8">
+      <div class="form-group">
+        <label for="name">Place's Name</label>
+        <input type="name" class="form-control" name="name">
       </div>
-      <div class="form-group col-md-6">
-        <label for="zip">Zip</label>
-        <input type="numbers" class="form-control" name="zip">
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" class="form-control" name="address" placeholder="St.stName 123">
       </div>
-      <div class="col">
-        <label for="category form-control">Category:</label>
-        <select id="category" name="category" class="form-control">
-          <option selected>Choose...</option>
-          <option>restaurants</option>
-          <option>drink-dance</option>
-          <option>useful</option>
-        </select>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="city">City</label>
+          <input type="text" class="form-control" name="city">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="zip">Zip</label>
+          <input type="numbers" class="form-control" name="zip">
+        </div>
+        <div class="col">
+          <label for="category form-control">Category:</label>
+          <select id="category" name="category" class="form-control">
+            <option selected>Choose...</option>
+            <option>restaurants</option>
+            <option>drink-dance</option>
+            <option>useful</option>
+          </select>
+        </div>
+        <div class="col">
+          <label for="category form-control">Link:</label>
+          <input type="link" class="form-control" name="link" placeholder="Copy shareble link here">
+        </div>
       </div>
-      <div class="col">
-        <label for="category form-control">Link:</label>
-        <input type="link" class="form-control" name="link" placeholder="Copy shareble link here">
-      </div>
-    </div>
-    <br />
-    <textarea class="form-control" name="description" id="description" rows="6"
+      <br/>
+      <textarea class="form-control" name="description" id="description" rows="3"
       placeholder="Describe the place"></textarea>
-      <br />
-    <button class="btn btn-primary">Create</button>
+      <br/>
+      <button class="btn btn-primary">Create</button>
+    </form>
+  </div>
 </div>
-</form>
-</div>
-</div>
+

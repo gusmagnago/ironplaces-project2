@@ -12,7 +12,7 @@ router.get('/create',(req, res, next) => {
   res.render('create');
 });
 
-router.post('/places', (req, res, next) => {
+router.post('/find-places', (req, res, next) => {
   const name = req.body.name;
   const address = req.body.address;
   const city = req.body.city;
@@ -32,22 +32,22 @@ router.post('/places', (req, res, next) => {
   })
   .then(places => {
     console.log('a place were created', places);
-    res.redirect('/places');
+    res.redirect('/find-places');
   })
   .catch(error => {
     console.log('an error occuried trying to create a place', error);
   });
 });
 
-router.get('/places', (req, res, next) => {
-  Places.find()
-  .then(places => {  
-    res.render('places', {places});
-  })
-  .catch(error => {
-    console.log(error);
-  });
-});
+// router.get('/places', (req, res, next) => {
+//   Places.find()
+//   .then(places => {  
+//     res.render('places', {places});
+//   })
+//   .catch(error => {
+//     console.log(error);
+//   });
+// });
 
 // ----------- END OF CREATE PLACES ROUTES--------------
 
