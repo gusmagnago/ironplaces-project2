@@ -1,5 +1,77 @@
-<h1 class="mt-5">This is <strong>{{name}} {{lastName}}'s</strong> Profile</h1>
-<h5 class="mb-5">Your email: <strong>{{email}}</strong></h5>
+<div class="container flex-column">
+  <h1 class="mt-5">This is <strong>{{name}} {{lastName}}'s</strong> Profile</h1>
+  <h5 class="mb-5">Your email: <strong>{{email}}</strong></h5>
+  <div class="d-flex justify-content-center">
+    {{!-- ÊDIT PROFILE BUTTON STARTS HERE --}}
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-outline-primary mx-4" data-toggle="modal" data-target="#exampleModal">
+      Edit your Profile
+    </button>
 
-<a class="btn btn-outline-primary" href="/edit-user" role="button">Edit Profile</a>
-<a class="btn btn-outline-danger" href="/delete-user" role="button">Delete Profile</a>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Hello, {{name}} {{lastName}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="/edit-user" method="POST">
+              <div class="form-group text-center">
+                <label for="sign-up-name">Please enter your name:</label>
+                <input class="form-control text-center" type="text" name="name" value={{name}}>
+              </div>
+              <div class="form-group text-center">
+                <label for="sign-up-lastName">Please enter your last name:</label>
+                <input class="form-control text-center" type="text" name="lastName" value={{lastName}}>
+              </div>
+              <div class="form-group text-center">
+                <label for="sign-up-email" class="text-center">Please enter your email address:</label>
+                <input class="form-control text-center" type="email" name="email" value={{email}}>
+              </div>
+              <div class="container d-flex justify-content-center">
+                <button type="submit" class="btn btn-outline-primary">Update Information</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{!-- EDIT PROFILE BUTTON ENDS HERE --}}
+
+    {{!-- DELETE BUTTON STARTS HERE --}}
+    <!-- Button trigger modal -->
+    <button class="btn btn-outline-danger" data-toggle="modal" data-target=".bd-example-modal-sm">
+      Delete Account!
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade bd-example-modal-sm mx-4" id="exampleModal" tabindex="-1" role="dialog"
+      aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Delete Account</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-dialog modal-sm">
+            Are you sure that you want to delete your account?
+          </div>
+          <div class="container">
+            <div class="modal-footer d-flex justify-content-around row">
+              <a class="btn btn-outline-primary col" href="/profile" role="button">No</a>
+              <a class="btn btn-outline-danger col" href="/delete-user" role="button">Yes</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{!-- DELETE BUTTON ENDS HERE --}}
+  </div>
+</div>

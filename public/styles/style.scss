@@ -1,6 +1,8 @@
 $font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$primary: red;
+$primary: #1D7BB4;
 $link-color: #00b7ff;
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 body {
   margin: 0;
