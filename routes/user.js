@@ -19,14 +19,16 @@ router.get('/sign-up', (req, res, next) => {
 });
 
 router.post('/sign-up', (req, res, next) => {
-  const username = req.body.username;
+  const name = req.body.name;
+  const lastName = req.body.lastName;
   const email = req.body.email;
   const password = req.body.password;
 
   bcrypt.hash(password, 10)
     .then(hash => {
       return User.create({
-        username,
+        name,
+        lastName,
         email,
         passwordHash: hash,
         role: 'STUDENT'
@@ -104,11 +106,13 @@ router.get('/edit-user', checkLogin, (req, res, next) => {
  });
 
  router.post('/edit-user',(req, res, next) => {
-  const username = req.body.username;
+  const name = req.body.name;
+  const lastName = req.body.lastName;
   const email = req.body.email;
 
   User.updateOne({_id: req.session.user._id}, {
-    username: username,
+    name: name,
+    lastName:lastName,
     email:email
   })
     .then(user=> {
@@ -122,11 +126,13 @@ router.get('/edit-user', checkLogin, (req, res, next) => {
 
 
  router.get("/delete-user", (req, res, next) => {
-  const username = req.body.username;
+  const name = req.body.name;
+  const lastName = req.body.lastName;
   const email = req.body.email;
 
   User.deleteOne({_id: req.session.user._id}, {
-    username: username,
+    name: name,
+    lastName:lastName,
     email:email
   })
     .then(user=> {

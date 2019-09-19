@@ -2,11 +2,15 @@
 
 <form action="/edit-user" method="POST">
     <div class="form-group text-center">
-        <label for="sign-up-username">Please enter your username</label>
-        <input  class="form-control text-center" type="text" name="username" value={{username}}>
+        <label for="sign-up-name">Please enter your name:</label>
+        <input  class="form-control text-center" type="text" name="name" value={{name}}>
     </div>
     <div class="form-group text-center">
-        <label for="sign-up-email" class="text-center">Please enter your email address</label>
+        <label for="sign-up-lastName">Please enter your last name:</label>
+        <input  class="form-control text-center" type="text" name="lastName" value={{lastName}}>
+    </div>
+    <div class="form-group text-center">
+        <label for="sign-up-email" class="text-center">Please enter your email address:</label>
         <input  class="form-control text-center" type="email" name="email" value={{email}}>
     </div>
         <button type="submit" class="btn btn-primary">Update Information</button>
