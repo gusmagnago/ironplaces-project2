@@ -1,13 +1,14 @@
+<h1>GUSTAVOOOOOOOOO</h1>
+
 <div class="container d-flex justify-content-center">
-   {{!-- <h2>Upload your photo</h2>
-  <form action="/upload" method="POST" enctype="multipart/form-data">
-    <input type="text" name="name">
-    <input type="file" name="photo">
-    <input type="submit" value="Save">
-  </form> --}}
-  <form method="POST" action="/places">
+  <div class="row">
+    <div class="col-5">
+      <img src="/images/logo_ironplaces.png" alt="ironplaces-logo">
+      <h1 class="mt-4">Share a place that you like (or not!) with all ironhackers!</h1>
+  </div>
+  <form method="POST" action="/places" class="col-7">
     <div class="form-group">
-      <label for="name">Name</label>
+      <label for="name">Place's Name</label>
       <input type="name" class="form-control" name="name">
     </div>
     <div class="form-group">
@@ -44,4 +45,5 @@
     <button class="btn btn-primary">Create</button>
 </div>
 </form>
+</div>
 </div>
