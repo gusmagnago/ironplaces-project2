@@ -135,9 +135,8 @@ router.get('/edit-user', checkLogin, (req, res, next) => {
     lastName:lastName,
     email:email
   })
-    .then(user=> {
-      console.log(user);
-      res.render('delete-user');
+    .then(user => {
+      res.redirect('/sign-out');
     })
     .catch(error => {
       console.log('Error deleting user profile', error);
