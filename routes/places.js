@@ -16,7 +16,7 @@ router.post('/find-places', (req, res, next) => {
   const name = req.body.name;
   const address = req.body.address;
   const city = req.body.city;
-  const zip = req.body.zip;
+  const contact = req.body.contact;
   const description = req.body.description;
   const category = req.body.category;
   const link = req.body.link;
@@ -25,7 +25,7 @@ router.post('/find-places', (req, res, next) => {
     name,
     address,
     city,
-    zip,
+    contact,
     description, 
     category, 
     link
@@ -92,23 +92,23 @@ router.get('/edit-place/:id',(req, res, next) => {
   });
 });
 
-router.get('/find-places/:category.restaurants', (req, res, next) => {
-  const category = req.params.category.restaurants;
-  Places.find(category)
-  .then((places) => {
-    res.render('restaurants', places);
-  })
-  .catch(error => {
-    console.log('you have an error here!', error);
-  });
-});
+// router.get('/find-places/:category.restaurants', (req, res, next) => {
+//   const category = req.params.category.restaurants;
+//   Places.find(category)
+//   .then((places) => {
+//     res.render('restaurants', places);
+//   })
+//   .catch(error => {
+//     console.log('you have an error here!', error);
+//   });
+// });
 
 router.post('/edit-place/:id', (req, res, next) => {
   const id = req.params.id;
   const name = req.body.name;
   const address = req.body.address;
   const city = req.body.city;
-  const zip = req.body.zip;
+  const contact = req.body.contact;
   const description = req.body.description;
   const category = req.body.category;
   
@@ -116,7 +116,7 @@ router.post('/edit-place/:id', (req, res, next) => {
     name,
     address,
     city,
-    zip,
+    contact,
     description,
     category
   })
@@ -137,7 +137,7 @@ router.get('/delete-place/:id', (req, res, next) => {
   const name = req.body.name;
   const address = req.body.address;
   const city = req.body.city;
-  const zip = req.body.zip;
+  const contact = req.body.contact;
   const description = req.body.description;
   const category = req.body.category;
   
@@ -145,7 +145,7 @@ router.get('/delete-place/:id', (req, res, next) => {
     name,
     address,
     city,
-    zip,
+    contact,
     description,
     category
   })
