@@ -1,5 +1,6 @@
 <div class="container flex-column">
   <h1 class="mt-5">This is <strong>{{name}} {{lastName}}'s</strong> Profile</h1>
+  <span>City: {{city}}</span>
   <h5 class="mb-5">Your email: <strong>{{email}}</strong></h5>
 
   <div class="d-flex justify-content-left">
@@ -32,6 +33,21 @@
               <div class="form-group text-center">
                 <label for="sign-up-email" class="text-center">Please enter your email address:</label>
                 <input class="form-control text-center" type="email" name="email" value={{email}}>
+              </div>
+              <div class="form-group">
+                <label for="city form-control">City:</label>
+                <select id="city" name="city" class="form-control">
+                  <option selected>Choose...</option>
+                  <option>Amsterdam</option>
+                  <option>Barcelona</option>
+                  <option>Berlin</option>
+                  <option>Lisbon</option>
+                  <option>Madrid</option>
+                  <option>Miami</option>
+                  <option>México City</option>
+                  <option>Paris</option>
+                  <option>São Paulo</option>
+                </select>
               </div>
               <div class="container d-flex justify-content-center">
                 <button type="submit" class="btn btn-outline-primary">Update Information</button>
@@ -79,24 +95,24 @@
 
 <div class="container">
   <div class="row">
-      <h4 class="col-6 mt-5 mb-3">Place's History</h4>
-  </div>    
+    <h4 class="col-6 mt-5 mb-3">Place's History</h4>
+  </div>
   <div class="row">
     {{#each _createdPlaces}}
-      <div class="card col-4 border-0">
-        <div class="card-body border rounded shadow-sm">
-          <h5 class="card-title text-primary">{{this.name}}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">{{this.address}}</h6>
-          <p class="card-text">{{this.city}} {{this.zip}}</p>
-          <p class="card-text">{{this.description}}</p>
-          <a class="card-text" href="{{this.link}}">{{this.link}}</a>
-          <p class="card-text text-primary">{{this.category}}</p>
-        </div>
-        <div class="row p-2">
-          <a class="btn btn-outline-primary col-4 mx-2" href="/edit-place/{{this._id}}">Edit Place</a>
-          <a class="btn btn-outline-danger col-4 mx-2" href="/delete-place/{{this._id}}">Delete Place</a>
-        </div>
+    <div class="card col-4 border-0">
+      <div class="card-body border rounded shadow-sm">
+        <h5 class="card-title text-primary">{{this.name}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{this.address}}</h6>
+        <p class="card-text">{{this.city}} {{this.zip}}</p>
+        <p class="card-text">{{this.description}}</p>
+        <a class="card-text" href="{{this.link}}">{{this.link}}</a>
+        <p class="card-text text-primary">{{this.category}}</p>
       </div>
+      <div class="row p-2">
+        <a class="btn btn-outline-primary col-4 mx-2" href="/edit-place/{{this._id}}">Edit Place</a>
+        <a class="btn btn-outline-danger col-4 mx-2" href="/delete-place/{{this._id}}">Delete Place</a>
+      </div>
+    </div>
     {{/each }}
   </div>
 </div>

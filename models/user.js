@@ -30,6 +30,11 @@ const schema = new mongoose.Schema({
   role: {
     type: String,
     enum : ['ADMIN', 'STUDENT']
+  }, 
+  city: {
+    type: String,
+    required: true,
+    enum: ['Amsterdam', 'Barcelona', 'Berlin', 'Lisbon', 'Madrid', 'Miami', 'México City', 'Paris', 'São Paulo']
   }
 });
 

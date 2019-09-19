@@ -22,6 +22,7 @@ router.post('/sign-up', checkUser, (req, res, next) => {
   const name = req.body.name;
   const lastName = req.body.lastName;
   const email = req.body.email;
+  const city = req.body.city;
   const password = req.body.password;
 
   bcrypt.hash(password, 10)
@@ -30,6 +31,7 @@ router.post('/sign-up', checkUser, (req, res, next) => {
         name,
         lastName,
         email,
+        city,
         passwordHash: hash,
         role: 'STUDENT'
       });
@@ -37,7 +39,8 @@ router.post('/sign-up', checkUser, (req, res, next) => {
     .then(user => {
       req.session.user = {
         _id: user._id,
-        role: user.role
+        role: user.role,
+        city: user.city
       };
       res.redirect('/find-places');
     })
@@ -71,7 +74,8 @@ router.post('/sign-in', (req, res, next) => {
       } else {
         req.session.user = {
           _id: auxUser._id,
-          role: auxUser.role
+          role: auxUser.role,
+          city: auxUser.city
         };
         res.redirect('find-places');
       }
@@ -109,11 +113,13 @@ router.get('/edit-user', checkLogin, (req, res, next) => {
  router.post('/edit-user',(req, res, next) => {
   const name = req.body.name;
   const lastName = req.body.lastName;
+  const city = req.body.city;
   const email = req.body.email;
 
   User.updateOne({_id: req.session.user._id}, {
     name: name,
     lastName:lastName,
+    city:city,
     email:email
   })
     .then(user=> {

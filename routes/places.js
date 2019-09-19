@@ -55,8 +55,9 @@ router.post('/find-places', (req, res, next) => {
  // ----------- FIND PLACES ROUTE --------------
 
 router.get('/find-places',(req, res, next) => {
-  Places.find()
+  Places.findOneAndUpdate({city: req.session.user.city})
   .then(places => {  
+    console.log(req.user);
     res.render('find-places', {places});
   })
   .catch(error => {
@@ -66,7 +67,10 @@ router.get('/find-places',(req, res, next) => {
 
 router.get('/find-places/:category',(req, res, next) => {
   const category = req.params.category;
-  Places.find({category: category})
+  Places.find({
+    city: req.session.user.city,
+    category: category
+  })
   .then(places => {  
     console.log(places);
     res.render('find-places', {places});
@@ -89,17 +93,6 @@ router.get('/edit-place/:id',(req, res, next) => {
   })
   .catch(error => {
     console.log("there was an error here!!!", error);
-  });
-});
-
-router.get('/find-places/:category.restaurants', (req, res, next) => {
-  const category = req.paramas.gategory.restaurants;
-  Places.find(category)
-  .then((places) => {
-    res.render('restaurants', places);
-  })
-  .catch(error => {
-    console.log('you have an error here!', error);
   });
 });
 
