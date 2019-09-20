@@ -1,7 +1,10 @@
-$font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$primary: #1D7BB4;
+$font-sans: 'Roboto Mono', monospace, Arial, sans-serif;
+$primary: #32c3ff;
 $danger: #b1b1b1;
-$link-color: #1D7BB4;
+$link-color: #32c3ff;
+$dark:#1e2433;
+$info:#ec3635;
+
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
@@ -13,6 +16,23 @@ body {
 
 a {
   color: $link-color;
+}
+
+h1, h2 {
+  font-family: 'Roboto Mono', monospace;
+}
+
+h3, h4, h5, p {
+  font-family: Arial, sans-serif;
+}
+
+body {
+background-image: url("../images/background_darkblue.png") !important;
+height: 100%;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+background-attachment: fixed;
 }
 
 

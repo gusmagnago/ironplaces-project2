@@ -6,23 +6,23 @@
       <form method="POST" action="/sign-up">
             <div class="form-group text-center">
                 <label for="sign-up-name">Please enter your name:</label>
-                <input  class="form-control text-center" type="text" name="name" placeholder="Your name">
+                <input  class="form-control text-center" type="text" name="name" required placeholder="Your name">
             </div>
             <div class="form-group text-center">
-                <label for="sign-up-lastName">Please enter your last name:</label>
-                <input  class="form-control text-center" type="text" name="lastName" placeholder="Your last name">
+                <label for="sign-up-lastName">Your last name:</label>
+                <input  class="form-control text-center" type="text" name="lastName" required placeholder="Your last name">
             </div>
             <div class="form-group text-center">
                 <label for="sign-up-email" class="text-center">Your Email Address:</label>
-                <input  class="form-control text-center" type="email" name="email" placeholder="Your Email">
+                <input  class="form-control text-center" type="email" name="email" required placeholder="Your Email">
             </div>
             <div class="form-group text-center">
                 <label for="sign-up-password" class="text-center">A Safe Password:</label>
-                <input  class="form-control text-center" type="password" name="password" placeholder="Password">
+                <input  class="form-control text-center" type="password" name="password" required placeholder="Password">
             </div>
             <div class="form-group">
           <label for="city form-control">City:</label>
-          <select id="city" name="city" class="form-control">
+          <select id="city" name="city" class="form-control" required>
             <option selected>Choose...</option>
             <option>Amsterdam</option>
             <option>Barcelona</option>

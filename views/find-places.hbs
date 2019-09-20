@@ -1,6 +1,7 @@
+<section class="find-places">
 <div class="container">
   <div class="row">
-      <h1 class="mt-3 mb-5 text-primary font-weight-light display-4">Choose the place you want to go!</h1>
+      <h1 class="mt-5 mb-5 text-primary font-weight-light display-4">Choose the place you want to go!</h1>
       <div class="mb-4 col-12">
         <a class="btn btn-outline-primary mx-1" href="/find-places/restaurants">Restaurants</a>
         <a class="btn btn-outline-primary mx-1" href="/find-places/drink-dance">Drink and dance</a>
@@ -8,14 +9,16 @@
         <a class="btn btn-outline-primary mx-1" href="/find-places">All Places</a>
       </div>
     {{#each places}}
-      <div class="card col-4 border-0 my-2">
-        <div class="card-body border rounded shadow-sm">
+      <div class="col-4">
+        <div class="card rounded m-2 shadow bg-light">
+        <div class="card-body">
           <h5 class="card-title text-primary">{{this.name}}</h5>
           <h6 class="card-subtitle mb-2 text-muted">{{this.address}}</h6>
           <p class="card-text">{{this.city}} {{this.contact}}</p>
           <p class="card-text">{{this.description}}</p>
           <a class="card-text btn btn-outline-primary btn-sm mb-2" href="{{this.link}}" target="_blank">Open Map</a>
-          <p class="card-text text-primary">{{this.category}}</p>
+          <p class="card-text text-info">{{this.category}}</p>
+        </div>
         </div>
         {{#ifEquals ../user.role "ADMIN"}}
         <div class="row p-2">
@@ -27,3 +30,4 @@
     {{/each}}  
   </div>
 </div>
+</section>
