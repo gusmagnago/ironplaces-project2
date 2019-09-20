@@ -4,6 +4,7 @@ $danger: #b1b1b1;
 $link-color: #1D7BB4;
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import 'https://fonts.googleapis.com/css?family=Roboto&display=swap';
 
 body {
   margin: 0;
@@ -15,4 +16,7 @@ a {
   color: $link-color;
 }
 
+h1, h2, h3, h4, h5 {
+  font-family: 'Roboto', sans-serif;
+}
 
