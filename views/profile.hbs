@@ -1,7 +1,10 @@
-<div class="container flex-column">
-  <h1 class="mt-5 font-weight-light">This is <strong>{{name}} {{lastName}}'s</strong> Profile</h1>
-  <h5 class="mb-2 font-weight-light">Your email: <strong>{{email}}</strong></h5>
-  <span class="mb-5">City: {{city}}</span>
+<div class="container flex-column mt-5">
+<div class="card p-4">
+  <h1 class="font-weight-light">This is <strong>{{name}} {{lastName}}'s</strong> Profile</h1>
+  <h5 class="font-weight-light">Your email: <strong>{{email}}</strong></h5>
+  <span class="text-info">City: {{city}}</span>
+</div>
+
 
   <div class="d-flex justify-content-left mt-3">
     {{!-- ÊDIT PROFILE BUTTON STARTS HERE --}}
@@ -99,20 +102,23 @@
   </div>
   <div class="row">
     {{#each _createdPlaces}}
-    <div class="card col-4 border-0">
-      <div class="card-body border rounded shadow-sm">
-        <h5 class="card-title text-primary">{{this.name}}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{this.address}}</h6>
-        <p class="card-text">{{this.city}} {{this.zip}}</p>
-        <p class="card-text">{{this.description}}</p>
-        <a class="card-text btn btn-outline-primary btn-sm mb-2" href="{{this.link}}" target="_blank">Open Map</a>
-        <p class="card-text text-primary">{{this.category}}</p>
+   <div class="col-4">
+        <div class="card rounded m-2 shadow bg-light">
+        <div class="card-body">
+          <h5 class="card-title text-primary">{{this.name}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{this.address}}</h6>
+          <p class="card-text">{{this.city}} {{this.contact}}</p>
+          <p class="card-text">{{this.description}}</p>
+          <a class="card-text btn btn-outline-primary btn-sm mb-2" href="{{this.link}}" target="_blank">Open Map</a>
+          <p class="card-text text-info">{{this.category}}</p>
+        </div>
+        </div>
+        <div class="row p-2">
+          <a class="btn btn-outline-primary col mx-2" href="/edit-place/{{this._id}}">Edit</a>
+          <a class="btn btn-outline-danger col mx-2" href="/delete-place/{{this._id}}">Delete</a>
+        </div>
       </div>
-      <div class="row p-2">
-        <a class="btn btn-outline-primary col-4 mx-2" href="/edit-place/{{this._id}}">Edit Place</a>
-        <a class="btn btn-outline-danger col-4 mx-2" href="/delete-place/{{this._id}}">Delete Place</a>
-      </div>
-    </div>
     {{/each }}
   </div>
 </div>
+

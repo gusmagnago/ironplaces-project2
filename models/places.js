@@ -20,7 +20,7 @@ const placesSchema = new mongoose.Schema({
     enum: ['Amsterdam', 'Barcelona', 'Berlin', 'Lisbon', 'Madrid', 'Miami', 'México City', 'Paris', 'São Paulo']
   },
   contact: {
-    type: Number,
+    type: String,
     trim: true
   },
   description: {
