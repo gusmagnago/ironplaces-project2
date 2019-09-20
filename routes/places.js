@@ -97,6 +97,7 @@ router.get('/edit-place/:id',(req, res, next) => {
 });
 
 router.post('/edit-place/:id', (req, res, next) => {
+  console.log(req.body);
   const id = req.params.id;
   const name = req.body.name;
   const address = req.body.address;
