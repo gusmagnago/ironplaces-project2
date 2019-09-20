@@ -8,16 +8,16 @@
     <form method="POST" action="/find-places">
       <div class="form-group">
         <label for="name">Place's Name</label>
-        <input type="name" class="form-control" name="name">
+        <input type="name" class="form-control" required name="name">
       </div>
       <div class="form-group">
         <label for="address">Address</label>
-        <input type="text" class="form-control" name="address" placeholder="St.stName 123">
+        <input type="text" class="form-control" name="address" required placeholder="St.stName 123">
       </div>
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="city form-control">City:</label>
-          <select id="city" name="city" class="form-control">
+          <select id="city" name="city" required class="form-control">
             <option disabled selected>Choose...</option>
             <option>Amsterdam</option>
             <option>Barcelona</option>
@@ -36,7 +36,7 @@
         </div>
         <div class="col">
           <label for="category form-control">Category:</label>
-          <select id="category" name="category" class="form-control">
+          <select id="category" name="category" required class="form-control">
             <option disabled  selected>Choose...</option>
             <option>restaurants</option>
             <option>drink-dance</option>
